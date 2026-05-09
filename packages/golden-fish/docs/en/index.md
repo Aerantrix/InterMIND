@@ -1,26 +1,19 @@
 ---
 layout: home
-title: Company Formation Services in the UAE
-description: "Expert UAE company formation and support services. Company setup, banking, tax, legal and visa solutions. Pay only after approval."
+title: Start Your Business in the UAE
+description: "Expert UAE company formation services with transparent prepayment, step-by-step guidance, and full legal support. Banking, visas, and corporate structuring under one official contract."
 showSponsors: false
 
 hero:
-  name: "UAE: Your Financial Safe Harbor"
-  # text: We speak your tongue
-  tagline: "5-minute expert consultation: Discover how to setup your UAE business <span class='hl'>risk-free</span>"
-  # tagline: "5 minutes with our expert = Your complete UAE business roadmap"
+  name: "Start Your Business in the UAE"
+  tagline: "Stress-Free and Legally Guaranteed. Transparent pricing, step-by-step guidance, and official prepayment contract."
   actions:
     - theme: brand
-      text: Instant expert chat
-      link: /chat
-  image:
-    light:
-      src: /img/Logo.avif
-      width: 40%
-    dark:
-      src: /img/Logo.avif
-      width: 40%
-    alt: Golden Fish logo
+      text: Calculate Business Setup Cost →
+      link: "#contact-form"
+    - theme: alt
+      text: Schedule A Call →
+      link: /resources/contacts
 ---
 
 <FeatureBlock :card="{
@@ -48,8 +41,8 @@ hero:
 }" />
 
 <FeatureBlock :card="{
-  title: 'Golden Visa & Residency',
-  details: 'Obtain a UAE **Golden Visa** for long-term residency with a seamless application process. \n\n* **No need to enter UAE every 6 months**\n* 10-year validity with the option for renewal upon maintaining qualifying conditions\n* 92% success rate\n\n[Learn more](/uae-business/offer/golden-visa/)',
+  title: 'UAE Residence Visa for Owners & Employees',
+  details: 'UAE residence visa for business owners, founders, and team members. Long-term residency tied to your company setup. \n\n* Residency for owners, partners, and employees\n* Includes Emirates ID processing\n* Renewable, with optional family sponsorship\n\n[Learn more](/uae-business/offer/golden-visa/)',
   link: '/uae-business/offer/golden-visa/',
   src: {
     light: '/img/iStock-1312241253.avif',
@@ -57,6 +50,18 @@ hero:
     width: '100%'
   },
   inversion: false
+}" />
+
+<FeatureBlock :card="{
+  title: 'Legal Support & Corporate Structuring',
+  details: 'Full legal coverage for your UAE business — from initial structuring to ongoing operations. Licensed in-house team. \n\n* Corporate structuring and shareholder agreements\n* M&A, restructuring, and financing\n* Dispute resolution and compliance advisory\n\n[Learn more](/uae-business/offer/legal-support/)',
+  link: '/uae-business/offer/legal-support/',
+  src: {
+    light: '/img/iStock-650045508.avif',
+    dark: '/img/iStock-1498627598.avif',
+    width: '100%'
+  },
+  inversion: true
 }" />
 
 <FeatureCards :features="[
@@ -114,19 +119,19 @@ hero:
 
 <BenefitsList :features="[
   {
-    icon: '🏢',
-    title: 'Local UAE Expertise',
-    text: 'Dedicated specialists in Dubai provide expert guidance through every step of the process.'
+    icon: '📜',
+    title: 'Registered UAE Provider',
+    text: 'Golden Fish is a registered UAE corporate services provider. Every engagement is delivered under a legal contract — no agents, no outsourcing.'
   },
   {
-    icon: '📊',
-    title: 'Proven Success Rate',
-    text: 'Over 90% approval rate with hundreds of visas, bank accounts, and company registrations issued through our premium processing.'
+    icon: '👥',
+    title: 'In-house Licensed Team',
+    text: 'Our in-house specialists in legal, financial, and visa matters handle every step. You work with one team from inquiry to ongoing support.'
   },
   {
-    icon: '💸',
-    title: '**Success-Based Fees**',
-    text: '[Pay only after approval](/uae-business/benefits/success-based-fees). Complete transparency with no hidden costs.'
+    icon: '💰',
+    title: 'Transparent Pricing — No Hidden Fees',
+    text: 'You receive a fixed-price quote upfront. We start work only after you review and approve the commercial offer. No surprises, no fine print.'
   },
 ]" />
 

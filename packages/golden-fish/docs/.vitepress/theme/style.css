@@ -3,13 +3,6 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
-/*
- Раскоммтировать ниже для отображения всех контейнеров
- */
-/* * {
-  outline: 1px solid red !important; 
-} */
-
 :root {
   --vp-c-main-1: #444444;
   --vp-c-main-2: #222222;
@@ -37,10 +30,11 @@
 }
 
 .dark {
-  --vp-c-main-1: #bbbbbb;
-  --vp-c-main-2: #dddddd;
-  --vp-c-main-3: #ffffff;
-  --vp-c-main-soft: rgba(252, 253, 255, 0.14);
+  /* Banking Navy palette — deep midnight blue + warm gold + terracotta CTA */
+  --vp-c-main-1: #8FA3BD;
+  --vp-c-main-2: #B8C5D6;
+  --vp-c-main-3: #F0EDE6;
+  --vp-c-main-soft: rgba(240, 237, 230, 0.14);
 
   --vp-c-indigo-bg: #241257;
   --vp-c-indigo-border: #743ee4;
@@ -59,7 +53,7 @@
 
   --vp-c-red-border: #d2d8e0;
 
-  --vp-hl-color: #ffb36b;
+  --vp-hl-color: #C9A961;
 }
 
 /**
@@ -74,6 +68,17 @@
   --vp-button-brand-hover-bg: var(--vp-c-neutral-inverse);
   --vp-button-brand-active-text: var(--vp-c-neutral);
   --vp-button-brand-active-bg: var(--vp-c-default-1);
+}
+
+/* Banking Navy — terracotta CTA in dark mode */
+.dark {
+  --vp-button-brand-bg: #B45B3F;
+  --vp-button-brand-text: #F0EDE6;
+  --vp-button-brand-hover-bg: #C56C50;
+  --vp-button-brand-hover-text: #F0EDE6;
+  --vp-button-brand-hover-border: #C56C50;
+  --vp-button-brand-active-bg: #A04A30;
+  --vp-button-brand-active-text: #F0EDE6;
 }
 
 /**
@@ -100,7 +105,6 @@
 
   --vp-custom-block-caution-bg: var(--vp-c-gray-bg);
   --vp-custom-block-caution-border: var(--vp-c-gray-border);
-  /* --vp-custom-block-caution-text: var(--vp-c-neutral-inverse); */
 
   --vp-badge-info-bg: var(--vp-custom-block-note-bg);
 }
@@ -111,30 +115,17 @@
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #caa36f 0%, #b08c5c 50%, rgba(252, 176, 69, 1) 100%);
-  /* --vp-home-hero-name-color: transparent; */
-  /* --vp-home-hero-name-background: -webkit-linear-gradient(0deg,
-      rgb(16, 15, 16) 0%,
-      rgba(253, 29, 29, 1) 50%,
-      rgba(252, 176, 69, 1) 100%); */
 }
 
-/**
- * Component: Algolia
- * -------------------------------------------------------------------------- */
-
-/* .DocSearch {
-	--docsearch-primary-color: var(--vp-c-brand-1) !important;
-} */
+.dark {
+  /* Banking Navy — warm gold gradient for hero title */
+  --vp-home-hero-name-background: -webkit-linear-gradient(0deg, #C9A961 0%, #B89348 50%, #D4B97A 100%);
+}
 
 :root h2 {
   border-top: none;
   margin: 0;
 }
-
-/* .hl {
-  color: #ae6040;
-  font-weight: bold;
-} */
 
 .link-text {
   color: var(--vp-c-brand-1);
@@ -145,23 +136,15 @@
   color: var(--vp-c-brand-2);
 }
 
-/* Highlight color for both light and dark themes */
-
 :root {
   --vp-hl-color-light: #84400b;
-  /* Highlight color for light theme */
   --vp-hl-bg-light: rgba(255, 239, 213, 0.3);
-  /* Optional background color for light theme */
 }
 
 .dark {
-  --vp-hl-color-dark: #ffb36b;
-  /* Highlight color for dark theme */
-  --vp-hl-bg-dark: rgba(174, 96, 64, 0.3);
-  /* Optional background color for dark theme */
+  --vp-hl-color-dark: #C9A961;
+  --vp-hl-bg-dark: rgba(201, 169, 97, 0.15);
 }
-
-/* Highlight class for both light and dark themes */
 
 .hl {
   color: var(--vp-hl-color-light);
@@ -173,7 +156,6 @@
   font-weight: bold;
 }
 
-/* Optional: Background for highlights */
 .hl-background {
   background-color: var(--vp-hl-bg-light);
   padding: 0.2em;
@@ -188,7 +170,6 @@
 
 h1.name {
   /* font-size: 2.5rem !important; */
-  /* Adjust this value as needed */
 }
 
 .dark-only {
@@ -207,17 +188,8 @@ h1.name {
   display: none !important;
 }
 
-/* Стили для таблиц */
-/* @media (max-width: 768px) {
-  :root {
-    --vp-layout-max-width: 100%;
-  }
-} */
-
 .VPDoc table {
-  /* width: 100% !important; */
   display: table;
-  /* margin: 20px 0; */
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -230,8 +202,6 @@ th {
 .VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }
-
-/* Стили для диаграммы Гантта */
 
 .titleText {
   font-size: 2rem !important;
@@ -248,7 +218,6 @@ th {
   font-size: 1rem;
 }
 
-/* Стили для контейнера логотипов */
 .my-logo-container {
   display: flex;
   align-items: center;
@@ -256,7 +225,6 @@ th {
   margin: 40px 0;
 }
 
-/* Стили для каждого логотипа */
 .my-logo {
   max-height: 100px;
   width: auto;
@@ -267,23 +235,19 @@ th {
   transition: transform 0.5s ease;
 }
 
-/* Эффект при наведении на ссылку (логотип) */
 .my-logo-link:hover .my-logo {
   filter: grayscale(0%);
   transform: scale(1.02);
 }
 
-/* Инверсия цвета логотипов в темной теме */
 .dark .my-logo.invert-on-dark {
   filter: invert(1) grayscale(100%);
 }
 
-/* Изменение фильтра при наведении в темной теме */
 .dark .my-logo-link:hover .my-logo.invert-on-dark {
   filter: grayscale(0%);
 }
 
-/* Адаптивность: изменение расположения на маленьких экранах */
 @media (max-width: 600px) {
   .my-logo-container {
     flex-direction: column;
@@ -296,13 +260,11 @@ th {
   }
 }
 
-/* Стили для блока с кодом */
 code {
   color: var(--vp-hl-color) !important;
   font-size: 1.02em !important;
 }
 
-/* Стилизация :::details */
 .vp-doc details p {
   font-size: 16px;
 }
@@ -311,12 +273,10 @@ code {
   margin-top: 1.5em;
 }
 
-/* Скрываем заголовки */
 .vp-doc .details > :is(h2, h3):first-of-type {
   display: none;
 }
 
-/* Размеры для summary */
 .vp-doc details:has(> h2) summary {
   font-size: 1.2em;
 }
@@ -325,32 +285,26 @@ code {
   font-size: 1em;
 }
 
-/* Стилизация символов раскрытия details */
 .vp-doc details > summary::marker {
   content: "＋ ";
-  /* Fullwidth Plus Sign (U+FF0B)  */
   color: var(--vp-hl-color);
 }
 
 .vp-doc details[open] > summary::marker {
   content: "－ ";
-  /* Fullwidth Hyphen-Minus (U+FF0D) */
   color: var(--vp-hl-color);
 }
 
-/* Базовые стили для контейнера кнопок */
 .auth-buttons-container {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-/* Стили для отображения в навбаре */
 .VPNavBar .auth-buttons-container {
   margin-left: 16px;
 }
 
-/* Стили для выпадающего меню на мобильных */
 .VPNavScreen .auth-buttons-container.mobile-buttons {
   flex-direction: column;
   gap: 8px;
@@ -359,44 +313,38 @@ code {
   width: 100%;
 }
 
-/* Кнопки на всю ширину в мобильном меню */
 .VPNavScreen .auth-buttons-container.mobile-buttons button {
   width: 100%;
   justify-content: center;
 }
 
-/* Контейнер для кнопок в футере документа */
 .VPDocFooter .auth-buttons-container {
   display: flex;
-  justify-content: center; /* Выравнивание по центру */
+  justify-content: center;
   gap: 16px;
-  margin-bottom: 30px; /* Отступ снизу */
-  width: 100%; /* Занимает полную ширину */
+  margin-bottom: 30px;
+  width: 100%;
   margin-top: 20px;
 }
 
-/* Альтернативный вариант для футера, если первый не сработает */
 div[class^="VPDocFooter"] .auth-buttons-container {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-/* Скрытие десктопных кнопок на мобильных устройствах */
 @media (max-width: 768px) {
   .VPNavBar .auth-buttons-container {
     display: none;
   }
 }
 
-/* Базовое предотвращение горизонтальной прокрутки сайта */
 html,
 body {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-/* Навигация и основные контейнеры */
 #app,
 .VPNav,
 .VPNavBar,
@@ -404,15 +352,13 @@ body {
   max-width: 100vw;
 }
 
-/* Специальная обработка для таблиц - контейнер с горизонтальной прокруткой */
 .vp-doc table {
   display: inline-table;
   overflow-x: auto;
   max-width: 100%;
-  white-space: nowrap; /* Опционально - предотвращает перенос в ячейках */
+  white-space: nowrap;
 }
 
-/* При необходимости можно сделать индикатор прокрутки для таблиц */
 .vp-doc table::after {
   content: "⟷ Прокрутите для просмотра";
   display: block;
@@ -420,7 +366,6 @@ body {
   font-size: 0.8rem;
   color: #999;
   padding: 0.5rem 0;
-  /* Показываем только если есть горизонтальная прокрутка */
   display: none;
 }
 
@@ -433,7 +378,6 @@ body {
   border-radius: 4px;
 }
 
-/* Другие широкие элементы, которые могут требовать прокрутки */
 pre,
 code {
   max-width: 100%;
@@ -442,4 +386,108 @@ code {
 
 :root {
   --vp-layout-max-width: 100%;
+}
+
+/**
+ * Banking Navy — force midnight blue backgrounds (VitePress overrides)
+ * -------------------------------------------------------------------------- */
+
+.dark {
+  --vp-c-bg: #0A1628 !important;
+  --vp-c-bg-alt: #0A1628 !important;
+  --vp-c-bg-elv: #13243F !important;
+  --vp-c-bg-soft: #13243F !important;
+}
+
+.dark body,
+.dark .VPNav,
+.dark .VPNavBar,
+.dark .VPHome,
+.dark .VPContent {
+  background-color: #0A1628;
+}
+
+.dark .VPFeature,
+.dark .VPHomeFeatures,
+.dark .vp-doc div[class*="custom-block"] {
+  background-color: #13243F;
+}
+
+.dark [class*="FeatureBlock"],
+.dark [class*="FeatureCard"],
+.dark [class*="BenefitsList"],
+.dark [class*="feature-block"],
+.dark [class*="feature-card"],
+.dark [class*="benefits-list"] {
+  background-color: #13243F;
+}
+
+/**
+ * Hero background image — pure CSS, no slots, no DOM hacks
+ * Image is set as background of .VPHero itself, so it physically cannot leak.
+ * -------------------------------------------------------------------------- */
+
+.VPHero {
+  position: relative;
+  isolation: isolate;
+  background-image: url('/img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Use WebP when supported by the browser */
+@supports (background-image: image-set(url('/img/hero-bg.webp') type('image/webp'))) {
+  .VPHero {
+    background-image: image-set(
+      url('/img/hero-bg.webp') type('image/webp'),
+      url('/img/hero-bg.jpg') type('image/jpeg')
+    );
+  }
+}
+
+/* Gradient overlay sits between background and content */
+.VPHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(10, 22, 40, 0.97) 0%,
+    rgba(10, 22, 40, 0.88) 50%,
+    rgba(10, 22, 40, 0.4) 75%,
+    rgba(10, 22, 40, 0.15) 100%
+  );
+}
+
+/* Soft fade at the bottom of hero into the next section */
+.VPHero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, var(--vp-c-bg) 100%);
+}
+
+/* Hero text content sits above the overlay */
+.VPHero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Light mode overlay — sand colour for future light theme */
+:root:not(.dark) .VPHero::before {
+  background: linear-gradient(
+    to right,
+    rgba(245, 240, 232, 0.95) 0%,
+    rgba(245, 240, 232, 0.8) 50%,
+    rgba(245, 240, 232, 0.4) 75%,
+    rgba(245, 240, 232, 0.15) 100%
+  );
 }
