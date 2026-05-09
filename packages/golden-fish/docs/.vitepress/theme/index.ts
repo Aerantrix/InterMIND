@@ -5,6 +5,7 @@ import { useData, inBrowser } from "vitepress"
 import { components } from "shared"
 import sharedTheme from "shared"
 import ContactForm from "./components/ContactForm.vue"
+import Footer from "./components/Footer.vue"
 import { Icon } from "@iconify/vue"
 import { inject } from "@vercel/analytics"
 import { injectSpeedInsights } from "@vercel/speed-insights"
@@ -49,6 +50,8 @@ export default {
           // h(ContactFormModalNav, { buttonText: "Send request" }),
         ])
       },
+      // Кастомный сайт-вайд футер (на всех страницах, включая home)
+      "layout-bottom": () => h(Footer),
     })
   },
   // Расширяем тему из shared и регистрируем компоненты
