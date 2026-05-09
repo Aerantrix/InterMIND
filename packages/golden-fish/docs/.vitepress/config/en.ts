@@ -32,9 +32,9 @@ export const en = defineConfig({
       // [`${BASE_PATH}/contact-us/`]: { base: `${BASE_PATH}/contact-us/`, items: sidebarContactUs() },
     },
 
-    footer: {
-      message: `© Golden Fish, 2025. | <a href="#" onClick="UC_UI.showSecondLayer();">Privacy Settings</a> | <a href="${BASE_PATH}/resources/TERMS-CONDITIONS">Terms & Conditions</a> | <a href="${BASE_PATH}/resources/Privacy-Policy">Privacy Policy</a> | <a href="${BASE_PATH}/resources/Legal-Regulations-for-AI-Services">Legal Regulations for AI Services</a>`,
-    },
+    // Site-wide footer is now rendered via the custom Footer.vue component
+    // (mounted in theme/index.ts → "layout-bottom" slot). VitePress' built-in
+    // doc-page footer is intentionally left empty to avoid duplication.
 
     localization: {
       placeholder4SearchInput: "Ask anything...",
