@@ -14,6 +14,7 @@
     "test:traffic-sources": "tsx __tests__/test-traffic-sources.ts",
     "translate": "tsx ../../scripts/translate.ts ./scripts/translateConfig.ts",
     "translate:check": "../../scripts/check-translation-balance.sh",
+    "pipedrive:fetch-fields": "tsx scripts/fetch-pipedrive-fields.ts",
     "format": "prettier -w .",
     "lint": "pnpm eslint --cache ."
   },

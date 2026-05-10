@@ -1129,8 +1129,9 @@ img.gf-btn-icon {
   flex-direction: column;
   gap: 28px;
   /* Stable height across steps so the section bottom (and the footer line below)
-     doesn't jump as users advance through 5-option vs 3-option questions. */
-  min-height: 640px;
+     doesn't jump between steps with different question counts (e.g. step 1 has
+     2 questions ~5+3 options, step 2 has 9-option scroll + 3 options). */
+  min-height: 720px;
 }
 .dark .gf-setup-card,
 .dark .gf-setup-success {
@@ -1183,12 +1184,39 @@ img.gf-btn-icon {
   font-variant-numeric: tabular-nums;
 }
 
-/* ============== Body / question ============== */
+/* ============== Body / questions ============== */
 .gf-setup-body {
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex: 1;
+}
+
+/* Multi-question step: stack questions with comfortable separators. */
+.gf-setup-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 8px;
+}
+.gf-setup-question {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gf-setup-question-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gf-gold);
+  margin: 0;
+}
+.gf-setup-question-hint {
+  font-size: 13px;
+  color: var(--gf-ink-muted);
+  margin: -4px 0 4px;
+  line-height: 1.5;
 }
 .gf-setup-title {
   font-size: clamp(22px, 2.4vw, 28px);
@@ -1211,7 +1239,7 @@ img.gf-btn-icon {
 /* Used on step 4 (business category) — single column, capped height with a
    visible scrollbar so the description textarea below stays in view. */
 .gf-setup-options-scroll {
-  max-height: 360px;
+  max-height: 280px;
   overflow-y: auto;
   padding-right: 8px;
   scrollbar-gutter: stable;
@@ -1300,6 +1328,43 @@ img.gf-btn-icon {
 
 /* Keyboard focus — visible ring on the card */
 .gf-setup-radio:focus-within {
+  outline: none;
+  border-color: var(--gf-link);
+  box-shadow: 0 0 0 3px var(--gf-link-soft);
+}
+
+/* ============== Compact button row (chip-style for short answers) ============== */
+.gf-setup-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gf-setup-button-chip {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  background: var(--gf-page);
+  border: 1px solid var(--gf-line-strong);
+  border-radius: 999px;
+  color: var(--gf-ink-soft);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+.gf-setup-button-chip:hover {
+  border-color: var(--gf-link-line);
+  background: var(--gf-link-soft);
+  color: var(--gf-ink);
+}
+.gf-setup-button-chip.is-selected {
+  border-color: var(--gf-link);
+  background: var(--gf-link-soft);
+  color: var(--gf-ink);
+  box-shadow: 0 0 0 3px var(--gf-link-soft);
+  font-weight: 600;
+}
+.gf-setup-button-chip:focus-visible {
   outline: none;
   border-color: var(--gf-link);
   box-shadow: 0 0 0 3px var(--gf-link-soft);

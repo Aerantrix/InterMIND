@@ -1,8 +1,17 @@
 /**
  * Unit tests for the SetupWizard composable.
- * Covers per-step validation, draft persistence, currentStep restore, and the
- * honeypot bot-detection guard. Vue reactivity APIs are exercised inside an
- * effectScope so each test owns its watchers.
+ *
+ * Step layout (matches setupSchema.ts):
+ *   Step 1  — applicantType (Other = 4)
+ *   Step 2  — mainGoal
+ *   Step 3  — licenseType
+ *   Step 4  — businessActivity (Other = 8)
+ *   Step 5  — companyStructure
+ *   Step 6  — wantsResidency
+ *   Step 7  — bankAccount
+ *   Step 8  — currentlyInUae
+ *   Step 9  — launchTimeline
+ *   Step 10 — contact + notes (merged)
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest"
@@ -10,7 +19,7 @@ import { effectScope, nextTick } from "vue"
 import { useSetupForm } from "../../docs/.vitepress/theme/components/setup/useSetupForm"
 import { COUNTRIES } from "../../docs/.vitepress/theme/components/setup/countries"
 
-const DRAFT_KEY = "gf_setup_draft_v1"
+const DRAFT_KEY = "gf_setup_draft_v4"
 
 interface FormFixture {
   form: ReturnType<typeof useSetupForm>
@@ -39,10 +48,10 @@ describe("useSetupForm", () => {
   describe("step validation — radio steps", () => {
     it("blocks Continue on a plain radio step until an option is picked", () => {
       const { form, scope } = makeForm()
-      form.currentStep.value = 2
+      form.currentStep.value = 2 // mainGoal
       form.next()
       expect(form.currentStep.value).toBe(2)
-      expect(form.stepError.value).toMatch(/pick one option/i)
+      expect(form.stepError.value).toMatch(/pick an option/i)
       scope.stop()
     })
 
@@ -81,20 +90,20 @@ describe("useSetupForm", () => {
     })
   })
 
-  describe("step 4 — business category", () => {
-    it("does not require description for a regular category", () => {
+  describe("step 4 — business activity 'Other' description", () => {
+    it("does not require description for a regular activity", () => {
       const { form, scope } = makeForm()
       form.currentStep.value = 4
-      form.state.businessCategory = 1 // Technology & IT
+      form.state.businessActivity = 1 // Technology & IT
       form.next()
       expect(form.currentStep.value).toBe(5)
       scope.stop()
     })
 
-    it("requires description (3+ chars) only when 'Other' is selected", () => {
+    it("requires description (3+ chars) only when 'Other / Not sure' is selected", () => {
       const { form, scope } = makeForm()
       form.currentStep.value = 4
-      form.state.businessCategory = 8 // Other
+      form.state.businessActivity = 8 // Other
       form.state.activityDescription = "ai"
       form.next()
       expect(form.currentStep.value).toBe(4)
@@ -107,7 +116,7 @@ describe("useSetupForm", () => {
     })
   })
 
-  describe("step 10 — contact", () => {
+  describe("step 10 — contact + notes (merged)", () => {
     it("rejects an invalid email", () => {
       const { form, scope } = makeForm()
       form.currentStep.value = 10
@@ -115,7 +124,6 @@ describe("useSetupForm", () => {
       form.state.contactEmail = "not-an-email"
       form.state.contactPhone = "501234567"
       form.next()
-      expect(form.currentStep.value).toBe(10)
       expect(form.stepError.value).toMatch(/email/i)
       scope.stop()
     })
@@ -128,7 +136,9 @@ describe("useSetupForm", () => {
       form.state.contactCountry = COUNTRIES.find((c) => c.iso === "AE")!
       form.state.contactPhone = "501234567"
       form.next()
-      expect(form.currentStep.value).toBe(11)
+      // Last step — currentStep stays at 10 since there's no step 11
+      expect(form.currentStep.value).toBe(10)
+      expect(form.stepError.value).toBe("")
       scope.stop()
     })
 
@@ -140,9 +150,21 @@ describe("useSetupForm", () => {
       form.state.contactCountry = COUNTRIES.find((c) => c.iso === "SA")!
       form.state.contactPhone = "5757543323341"
       form.next()
-      expect(form.currentStep.value).toBe(10)
       expect(form.stepError.value).toMatch(/Saudi Arabia/)
       expect(form.stepError.value).toContain("50 123 4567")
+      scope.stop()
+    })
+
+    it("notes question is optional — empty notes is fine when contact is valid", () => {
+      const { form, scope } = makeForm()
+      form.currentStep.value = 10
+      form.state.contactName = "Ivan Petrov"
+      form.state.contactEmail = "ivan@example.com"
+      form.state.contactCountry = COUNTRIES.find((c) => c.iso === "AE")!
+      form.state.contactPhone = "501234567"
+      form.state.notes = ""
+      form.next()
+      expect(form.stepError.value).toBe("")
       scope.stop()
     })
   })
@@ -225,13 +247,12 @@ describe("useSetupForm", () => {
       vi.stubGlobal("fetch", fetchSpy)
 
       const { form, scope } = makeForm()
-      // Fill in everything so validation alone wouldn't block submit
       Object.assign(form.state, {
         applicantType: 0,
         mainGoal: 0,
         licenseType: 0,
-        businessCategory: 1,
-        partnerStructure: 0,
+        businessActivity: 1,
+        companyStructure: 0,
         wantsResidency: 0,
         bankAccount: 0,
         currentlyInUae: 0,
@@ -241,7 +262,7 @@ describe("useSetupForm", () => {
         contactCountry: COUNTRIES.find((c) => c.iso === "AE")!,
         contactPhone: "501234567",
       })
-      form.currentStep.value = 11
+      form.currentStep.value = 10
 
       await form.submit("im-a-bot")
 

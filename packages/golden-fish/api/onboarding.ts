@@ -1,21 +1,34 @@
 /**
- * Onboarding Form Submission API Endpoint — STUB
+ * Onboarding Form Submission API Endpoint
  *
- * Validates the 11-step Business Set-Up wizard payload (pipedrive_integration_spec.md §3.3),
- * runs the honeypot check, and returns a fake lead_id so the frontend success flow can be
- * exercised end-to-end during the frontend-first phase.
+ * Receives the SetupWizard 11-step payload, validates it, and orchestrates
+ * the Pipedrive Lead creation + manager notification flow per
+ * pipedrive_integration_spec.md §4.
  *
- * TODO (backend phase 2):
- *   1. Replace the fake lead_id with createPersonAndLead() from api/lib/pipedriveLib.ts
- *   2. Map step values to Pipedrive option_id via dealFields config
- *   3. Send Telegram notification on success
- *   4. Send welcome email via SendGrid/Resend/Postmark
- *   5. Implement idempotency by hashing email + submitted_at minute
- *   6. Push failed submissions to a retry queue (failed_submissions table)
+ * Critical path (must succeed for the user to see success):
+ *   1. Validate payload (Zod) and honeypot
+ *   2. findOrCreatePerson — by email, exact match
+ *   3. createOnboardingLead — Lead with all custom field option_ids
+ *
+ * Best-effort (logged on failure, don't block response):
+ *   - Note attached to Lead (HTML summary)
+ *   - Activity (next-business-day call follow-up)
+ *   - Telegram alert to manager group
+ *   - Welcome email to applicant
+ *
+ * If Pipedrive itself fails, we surface a 500 to the client so they retry —
+ * losing the data with no persistence layer is worse than a transient error.
+ * This is a deviation from the spec's `failed_submissions` queue idea, but
+ * acceptable until we add a persistence backend (see Phase 2 roadmap).
  */
 
 import { z } from "zod"
 import { withDomainCheck } from "./lib/domainMiddleware.js"
+import type { OnboardingPayload } from "./types/onboardingTypes.js"
+import { findOrCreatePerson, createOnboardingLead, attachOnboardingNote, createFollowUpActivity } from "./lib/onboardingPipedriveLib.js"
+import { buildOnboardingNote } from "./lib/onboardingHtmlSummary.js"
+import { notifyTelegram } from "./lib/onboardingTelegram.js"
+import { sendWelcomeEmail } from "./lib/onboardingEmail.js"
 
 const radioStep = z.object({
   value: z.number().int().nullable(),
@@ -62,17 +75,9 @@ const onboardingSchema = z.object({
     })
     .optional()
     .default({ submitted_at: "" }),
+  // Honeypot — empty for real users, filled by bots
+  website: z.string().optional(),
 })
-
-function fakeLeadId(): string {
-  // Mimic Pipedrive's UUID-shaped lead_id so the frontend code path is realistic
-  const bytes = new Uint8Array(16)
-  crypto.getRandomValues(bytes)
-  bytes[6] = (bytes[6] & 0x0f) | 0x40
-  bytes[8] = (bytes[8] & 0x3f) | 0x80
-  const h = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("")
-  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`
-}
 
 export async function POST(request: Request): Promise<Response> {
   return withDomainCheck(request, async (req) => {
@@ -80,39 +85,62 @@ export async function POST(request: Request): Promise<Response> {
     try {
       body = await req.json()
     } catch {
-      return new Response(JSON.stringify({ success: false, error: "Invalid JSON" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      })
+      return jsonResponse(400, { success: false, error: "Invalid JSON" })
     }
 
     const parsed = onboardingSchema.safeParse(body)
     if (!parsed.success) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: "Validation failed",
-          issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
-        }),
-        { status: 400, headers: { "Content-Type": "application/json" } },
-      )
+      return jsonResponse(400, {
+        success: false,
+        error: "Validation failed",
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      })
     }
 
-    const data = parsed.data
-    const leadId = fakeLeadId()
+    const payload = parsed.data as OnboardingPayload & { website?: string }
 
-    // Stub-phase telemetry — useful for confirming traffic in Vercel logs
-    // before real Pipedrive integration is wired up.
-    console.info("[onboarding stub]", {
-      lead_id: leadId,
-      email: data.contact.email,
-      timeline_value: data.step9.value,
-      utm_source: data.meta.utm_source,
-    })
+    // Honeypot — silently accept (so bots don't learn) but don't actually create anything
+    if (payload.website && payload.website.length > 0) {
+      console.info("[onboarding] Honeypot triggered — silently dropping submission")
+      return jsonResponse(200, { success: true, lead_id: "honeypot-noop", person_id: null })
+    }
 
-    return new Response(JSON.stringify({ success: true, lead_id: leadId, person_id: null }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    })
+    let personId: number
+    let leadId: string
+
+    try {
+      const person = await findOrCreatePerson(payload)
+      personId = person.id
+      const lead = await createOnboardingLead(payload, personId)
+      leadId = lead.id
+    } catch (err) {
+      // The Pipedrive SDK throws plain objects, not Error instances; pass the
+      // raw value to console.error so Node's util.inspect prints fields like
+      // status, response.data.error, and the originating request URL.
+      console.error("[onboarding] Pipedrive critical-path failure:", err)
+      return jsonResponse(500, { success: false, error: "We couldn't save your submission. Please try again or email us directly." })
+    }
+
+    // Best-effort side effects in parallel. Failures are logged inside each
+    // function — we never await rejections that would surface to the user.
+    await Promise.allSettled([
+      attachOnboardingNote(leadId, buildOnboardingNote(payload)).catch((err) => {
+        console.error("[onboarding] attachOnboardingNote failed:", err instanceof Error ? err.message : err)
+      }),
+      createFollowUpActivity(leadId, personId, payload).catch((err) => {
+        console.error("[onboarding] createFollowUpActivity failed:", err instanceof Error ? err.message : err)
+      }),
+      notifyTelegram({ leadId, personId, payload }),
+      sendWelcomeEmail({ leadId, payload }),
+    ])
+
+    return jsonResponse(200, { success: true, lead_id: leadId, person_id: personId })
   }) as Promise<Response>
+}
+
+function jsonResponse(status: number, body: unknown): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  })
 }

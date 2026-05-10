@@ -1,0 +1,105 @@
+{
+  "_generated": "2026-05-10T10:19:13.928Z",
+  "_domain": "https://goldenfish.pipedrive.com",
+  "deal": {
+    "applicantType": {
+      "key": "ffd593fbcd2ba3bb3e10ae5f0fe5dc64a9c7db28",
+      "options": {
+        "0": 113,
+        "1": 114,
+        "2": 115,
+        "3": 116,
+        "4": 117
+      }
+    },
+    "mainGoal": {
+      "key": "ce8450b8835526f1624fcf0ca747e157860477f1",
+      "options": {
+        "0": 118,
+        "1": 119,
+        "2": 120,
+        "3": 121
+      }
+    },
+    "licenseType": {
+      "key": "ccc4729176acc2d74d24767c7c6f808cbd246e4d",
+      "options": {
+        "0": 122,
+        "1": 123,
+        "2": 124
+      }
+    },
+    "businessActivity": {
+      "key": "00a41b36ec824a550b31b74760a0eeb7fe7b2999",
+      "options": {
+        "0": 125,
+        "1": 126,
+        "2": 127,
+        "3": 128,
+        "4": 129,
+        "5": 130,
+        "6": 131,
+        "7": 132,
+        "8": 133
+      }
+    },
+    "companyStructure": {
+      "key": "10c36e1c6c1e2a9e768e8ef854a4e2074165c6f2",
+      "options": {
+        "0": 134,
+        "1": 135,
+        "2": 136
+      }
+    },
+    "wantsResidency": {
+      "key": "12c166663ef46d9604e24e4605e750d510a61bed",
+      "options": {
+        "0": 137,
+        "1": 138,
+        "2": 139
+      }
+    },
+    "bankAccount": {
+      "key": "47ad9904e559b6c0ab43160571b0979a306ac9ec",
+      "options": {
+        "0": 140,
+        "1": 141,
+        "2": 142
+      }
+    },
+    "currentlyInUae": {
+      "key": "097e94a155f20f8ca07d98dfcaa3e1e21f0ab9cb",
+      "options": {
+        "0": 143,
+        "1": 144,
+        "2": 145
+      }
+    },
+    "launchTimeline": {
+      "key": "578ad28969d40c4d2b316e5017a5236e4c1d45a6",
+      "options": {
+        "0": 146,
+        "1": 147,
+        "2": 148,
+        "3": 149
+      }
+    },
+    "utmSource": {
+      "key": "ac4af7e2fd1f8fdf8183e00a73114d434c496dbf"
+    },
+    "utmCampaign": {
+      "key": "06af758cf6718c6d6506c7f12e1108cde8045c70"
+    },
+    "message": {
+      "key": "baa8db361de3fa51e24c8e18c7d2271643635ba9"
+    },
+    "url": {
+      "key": "bcf617c56c755e11604aea1ed230d695cd5c2735"
+    }
+  },
+  "person": {
+    "countryCode": {
+      "key": "b8ba0ea36db4270f7b560e09fb2cb3e0714b388b"
+    }
+  }
+}

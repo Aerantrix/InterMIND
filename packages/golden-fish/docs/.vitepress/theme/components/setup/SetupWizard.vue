@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
-import { useSetupForm } from "./useSetupForm"
-import { STEPS } from "./setupSchema"
-import SetupRadioCard from "./SetupRadioCard.vue"
-import SetupTextField from "./SetupTextField.vue"
-import SetupTextarea from "./SetupTextarea.vue"
-import SetupCountryPicker from "./SetupCountryPicker.vue"
+import { useSetupForm, type SetupState } from "./useSetupForm"
+import SetupQuestionBlock from "./SetupQuestionBlock.vue"
 
 const props = withDefaults(
   defineProps<{
@@ -20,13 +16,6 @@ const { state, currentStep, totalSteps, currentStepConfig, stepError, isSubmitti
 
 const honeypot = ref("")
 
-const step1Config = STEPS[0].kind === "radio-with-other" ? STEPS[0] : null
-const step4Config = STEPS[3].kind === "category" ? STEPS[3] : null
-const step10Config = STEPS[9].kind === "contact" ? STEPS[9] : null
-const step11Config = STEPS[10].kind === "notes" ? STEPS[10] : null
-
-const showOtherInput = computed(() => step1Config !== null && state.applicantType === step1Config.otherValue)
-
 const isLastStep = computed(() => currentStep.value === totalSteps)
 
 const progressPct = computed(() => Math.round((currentStep.value / totalSteps) * 100))
@@ -36,21 +25,12 @@ const successWhatsappLink = computed(() => {
   return `https://wa.me/${props.whatsappNumber}?text=${text}`
 })
 
-function handleSubmit(): void {
-  submit(honeypot.value)
+function patchState(patch: Partial<SetupState>) {
+  Object.assign(state, patch)
 }
 
-// Strongly-typed accessor for radio-step current value (steps 2,3,5,6,7,8,9)
-const radioStepValue = computed<number | null>(() => {
-  const cfg = currentStepConfig.value
-  if (cfg.kind !== "radio") return null
-  return state[cfg.id as keyof typeof state] as number | null
-})
-
-function setRadioStepValue(v: number): void {
-  const cfg = currentStepConfig.value
-  if (cfg.kind !== "radio") return
-  ;(state[cfg.id as keyof typeof state] as unknown as number) = v
+function handleSubmit(): void {
+  submit(honeypot.value)
 }
 </script>
 
@@ -89,114 +69,16 @@ function setRadioStepValue(v: number): void {
       <h2 class="gf-setup-title">{{ currentStepConfig.title }}</h2>
       <p v-if="currentStepConfig.subtitle" class="gf-setup-subtitle">{{ currentStepConfig.subtitle }}</p>
 
-      <!-- Step 1 — applicant type with optional "other" text -->
-      <template v-if="currentStepConfig.kind === 'radio-with-other' && step1Config">
-        <div class="gf-setup-options">
-          <SetupRadioCard
-            v-for="opt in step1Config.options"
-            :key="opt.value"
-            :value="opt.value"
-            :model-value="state.applicantType"
-            :label="opt.label"
-            :description="opt.description"
-            name="applicantType"
-            @update:model-value="state.applicantType = $event"
-          />
-        </div>
-        <div v-if="showOtherInput" class="gf-setup-other">
-          <SetupTextField
-            v-model="state.applicantTypeOther"
-            :label="step1Config.otherLabel"
-            :placeholder="step1Config.otherPlaceholder"
-            :maxlength="step1Config.otherMaxLength"
-          />
-        </div>
-      </template>
-
-      <!-- Steps 2 / 3 / 5 / 6 / 7 / 8 / 9 — plain radio -->
-      <template v-else-if="currentStepConfig.kind === 'radio'">
-        <div class="gf-setup-options">
-          <SetupRadioCard
-            v-for="opt in currentStepConfig.options"
-            :key="opt.value"
-            :value="opt.value"
-            :model-value="radioStepValue"
-            :label="opt.label"
-            :description="opt.description"
-            :name="currentStepConfig.id"
-            @update:model-value="setRadioStepValue($event)"
-          />
-        </div>
-      </template>
-
-      <!-- Step 4 — business category; description only when "Other" is picked -->
-      <template v-else-if="currentStepConfig.kind === 'category' && step4Config">
-        <div class="gf-setup-options gf-setup-options-scroll">
-          <SetupRadioCard
-            v-for="opt in step4Config.options"
-            :key="opt.value"
-            :value="opt.value"
-            :model-value="state.businessCategory"
-            :label="opt.label"
-            :description="opt.description"
-            name="businessCategory"
-            @update:model-value="state.businessCategory = $event"
-          />
-        </div>
-        <div v-if="state.businessCategory === step4Config.otherValue" class="gf-setup-other">
-          <SetupTextarea
-            v-model="state.activityDescription"
-            :label="step4Config.descriptionLabel"
-            :placeholder="step4Config.descriptionPlaceholder"
-            :maxlength="step4Config.descriptionMaxLength"
-            :rows="3"
-          />
-        </div>
-      </template>
-
-      <!-- Step 10 — contact -->
-      <template v-else-if="currentStepConfig.kind === 'contact' && step10Config">
-        <div class="gf-setup-contact">
-          <SetupTextField
-            v-model="state.contactName"
-            :label="step10Config.nameLabel"
-            :placeholder="step10Config.namePlaceholder"
-            autocomplete="name"
-            :maxlength="120"
-          />
-          <SetupTextField
-            v-model="state.contactEmail"
-            :label="step10Config.emailLabel"
-            :placeholder="step10Config.emailPlaceholder"
-            type="email"
-            inputmode="email"
-            autocomplete="email"
-            :maxlength="160"
-          />
-          <div class="gf-setup-phone-row">
-            <div class="gf-setup-phone-country">
-              <span class="gf-setup-field-label">Country</span>
-              <SetupCountryPicker v-model="state.contactCountry" />
-            </div>
-            <div class="gf-setup-phone-number">
-              <SetupTextField
-                v-model="state.contactPhone"
-                :label="step10Config.phoneLabel"
-                :placeholder="state.contactCountry.example"
-                type="tel"
-                inputmode="tel"
-                autocomplete="tel"
-                :maxlength="20"
-              />
-            </div>
-          </div>
-        </div>
-      </template>
-
-      <!-- Step 11 — notes -->
-      <template v-else-if="currentStepConfig.kind === 'notes' && step11Config">
-        <SetupTextarea v-model="state.notes" :placeholder="step11Config.placeholder" :maxlength="step11Config.maxLength" :rows="6" />
-      </template>
+      <div class="gf-setup-questions">
+        <SetupQuestionBlock
+          v-for="q in currentStepConfig.questions"
+          :key="q.id"
+          :question="q"
+          :state="state"
+          :show-label="currentStepConfig.questions.length > 1"
+          @update:state="patchState($event)"
+        />
+      </div>
 
       <p v-if="stepError" class="gf-setup-error" role="alert">{{ stepError }}</p>
       <p v-if="submitError && isLastStep" class="gf-setup-error" role="alert">{{ submitError }}</p>
