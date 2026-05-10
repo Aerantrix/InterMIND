@@ -1,6 +1,14 @@
 {
   "cleanUrls": true,
 
+  "devCommand": "pnpm exec vitepress dev docs --port $PORT",
+
+  "functions": {
+    "api/onboarding.ts": {
+      "includeFiles": "api/config/**"
+    }
+  },
+
   "headers": [
     {
       "source": "/assets/(.*)",

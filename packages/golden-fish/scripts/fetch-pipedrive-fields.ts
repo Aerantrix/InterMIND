@@ -25,8 +25,21 @@ import { STEPS, type RadioStep, type RadioWithOtherStep, type CategoryStep } fro
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Load .env.local from package root (one level up from scripts/)
-loadEnv({ path: path.join(__dirname, "..", ".env.local") })
+// .env.local can live in either the package root (single-package setup) or the
+// monorepo root (canonical Vercel monorepo setup with .vercel/project.json at
+// repo root). Try both — first hit wins.
+const envCandidates = [path.join(__dirname, "..", ".env.local"), path.join(__dirname, "..", "..", "..", ".env.local")]
+let envLoaded = false
+for (const p of envCandidates) {
+  const result = loadEnv({ path: p })
+  if (result.parsed && Object.keys(result.parsed).length > 0) {
+    envLoaded = true
+    break
+  }
+}
+if (!envLoaded) {
+  console.warn(`[fetch-pipedrive-fields] No .env.local found in any of: ${envCandidates.join(", ")}`)
+}
 
 const API_TOKEN = process.env.PIPEDRIVE_API_TOKEN
 if (!API_TOKEN) {
