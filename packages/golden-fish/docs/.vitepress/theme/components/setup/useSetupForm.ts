@@ -316,13 +316,15 @@ export function useSetupForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(buildPayload()),
       })
-      const data = (await res.json()) as { success: boolean; lead_id?: string; error?: string }
+      const data = (await res.json()) as { success: boolean; lead_id?: string; error?: string; message?: string }
       if (res.ok && data.success && data.lead_id) {
         successLeadId.value = data.lead_id
         track("setup_form_submitted", { lead_id: data.lead_id })
         clearDraft()
       } else {
-        submitError.value = data.error || "Something went wrong. Please try again or email us directly."
+        // Some upstream middlewares (domainMiddleware) return `message` instead
+        // of `error` — fall through both before the generic catch-all.
+        submitError.value = data.error || data.message || "Something went wrong. Please try again or email us directly."
         track("setup_form_failed", { reason: submitError.value })
       }
     } catch (err) {
