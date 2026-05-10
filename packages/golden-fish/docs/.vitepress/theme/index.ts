@@ -6,6 +6,7 @@ import { components } from "shared"
 import sharedTheme from "shared"
 import ContactForm from "./components/ContactForm.vue"
 import Footer from "./components/Footer.vue"
+import SetupWizard from "./components/setup/SetupWizard.vue"
 import { Icon } from "@iconify/vue"
 import { inject } from "@vercel/analytics"
 import { injectSpeedInsights } from "@vercel/speed-insights"
@@ -62,6 +63,7 @@ export default {
     }
     // Регистрация моих компонентов пакета
     app.component("ContactForm", ContactForm)
+    app.component("SetupWizard", SetupWizard)
 
     // Регистрация внешних компонентов пакета
     app.component("Icon", Icon)
