@@ -28,6 +28,8 @@ describe("domainMiddleware", () => {
 
       expect(body).toEqual({
         success: false,
+        // Both fields present for cross-endpoint client compatibility
+        error: "Access denied: Domain not allowed",
         message: "Access denied: Domain not allowed",
         code: "DOMAIN_NOT_ALLOWED",
       })

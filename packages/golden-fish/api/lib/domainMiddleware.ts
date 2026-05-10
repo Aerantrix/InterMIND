@@ -21,6 +21,10 @@ export function createAccessDeniedResponse(): Response {
   return new Response(
     JSON.stringify({
       success: false,
+      // `error` for newer endpoints (onboarding) and `message` for legacy
+      // (submitForm/signUp) — both carry the same string so either client
+      // shape can surface a meaningful UI message.
+      error: "Access denied: Domain not allowed",
       message: "Access denied: Domain not allowed",
       code: "DOMAIN_NOT_ALLOWED",
     }),
