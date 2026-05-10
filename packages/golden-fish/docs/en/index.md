@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Calculate Business Setup Cost →
-      link: "#contact-form"
+      link: /setup/
     - theme: alt
       text: Schedule A Call →
       link: /resources/contacts
