@@ -14,7 +14,7 @@ import { DEFAULT_COUNTRY } from "./countries"
 import { STEPS, TOTAL_STEPS } from "./setupSchema"
 import { track } from "./track"
 
-const DRAFT_KEY = "gf_setup_draft_v1"
+const DRAFT_KEY = "gf_setup_draft_v2"
 const DRAFT_TTL_MS = 7 * 24 * 60 * 60 * 1000
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -24,9 +24,9 @@ export interface SetupState {
   applicantTypeOther: string
   mainGoal: number | null
   licenseType: number | null
-  businessCategory: number | null
+  businessActivity: number | null
   activityDescription: string
-  partnerStructure: number | null
+  companyStructure: number | null
   wantsResidency: number | null
   bankAccount: number | null
   currentlyInUae: number | null
@@ -44,9 +44,9 @@ function emptyState(): SetupState {
     applicantTypeOther: "",
     mainGoal: null,
     licenseType: null,
-    businessCategory: null,
+    businessActivity: null,
     activityDescription: "",
-    partnerStructure: null,
+    companyStructure: null,
     wantsResidency: null,
     bankAccount: null,
     currentlyInUae: null,
@@ -171,11 +171,11 @@ export function useSetupForm() {
         return true
       }
       case "category": {
-        if (state.businessCategory === null) {
+        if (state.businessActivity === null) {
           stepError.value = "Please pick one category to continue."
           return false
         }
-        if (state.businessCategory === step.otherValue && state.activityDescription.trim().length < 3) {
+        if (state.businessActivity === step.otherValue && state.activityDescription.trim().length < 3) {
           stepError.value = "Please briefly describe what you do (3+ characters)."
           return false
         }
@@ -256,11 +256,11 @@ export function useSetupForm() {
       step2: { value: state.mainGoal, label: optionLabel("mainGoal", state.mainGoal) },
       step3: { value: state.licenseType, label: optionLabel("licenseType", state.licenseType) },
       step4: {
-        category: state.businessCategory,
-        category_label: optionLabel("businessCategory", state.businessCategory),
+        category: state.businessActivity,
+        category_label: optionLabel("businessActivity", state.businessActivity),
         description: state.activityDescription.trim(),
       },
-      step5: { value: state.partnerStructure, label: optionLabel("partnerStructure", state.partnerStructure) },
+      step5: { value: state.companyStructure, label: optionLabel("companyStructure", state.companyStructure) },
       step6: { value: state.wantsResidency, label: optionLabel("wantsResidency", state.wantsResidency) },
       step7: { value: state.bankAccount, label: optionLabel("bankAccount", state.bankAccount) },
       step8: { value: state.currentlyInUae, label: optionLabel("currentlyInUae", state.currentlyInUae) },
@@ -357,9 +357,9 @@ function hasAnyInput(s: SetupState): boolean {
     s.applicantTypeOther.length > 0 ||
     s.mainGoal !== null ||
     s.licenseType !== null ||
-    s.businessCategory !== null ||
+    s.businessActivity !== null ||
     s.activityDescription.length > 0 ||
-    s.partnerStructure !== null ||
+    s.companyStructure !== null ||
     s.wantsResidency !== null ||
     s.bankAccount !== null ||
     s.currentlyInUae !== null ||

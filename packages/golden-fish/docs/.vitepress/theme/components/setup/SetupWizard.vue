@@ -136,14 +136,14 @@ function setRadioStepValue(v: number): void {
             v-for="opt in step4Config.options"
             :key="opt.value"
             :value="opt.value"
-            :model-value="state.businessCategory"
+            :model-value="state.businessActivity"
             :label="opt.label"
             :description="opt.description"
-            name="businessCategory"
-            @update:model-value="state.businessCategory = $event"
+            name="businessActivity"
+            @update:model-value="state.businessActivity = $event"
           />
         </div>
-        <div v-if="state.businessCategory === step4Config.otherValue" class="gf-setup-other">
+        <div v-if="state.businessActivity === step4Config.otherValue" class="gf-setup-other">
           <SetupTextarea
             v-model="state.activityDescription"
             :label="step4Config.descriptionLabel"

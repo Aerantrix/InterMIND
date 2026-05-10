@@ -10,7 +10,7 @@ import { effectScope, nextTick } from "vue"
 import { useSetupForm } from "../../docs/.vitepress/theme/components/setup/useSetupForm"
 import { COUNTRIES } from "../../docs/.vitepress/theme/components/setup/countries"
 
-const DRAFT_KEY = "gf_setup_draft_v1"
+const DRAFT_KEY = "gf_setup_draft_v2"
 
 interface FormFixture {
   form: ReturnType<typeof useSetupForm>
@@ -85,7 +85,7 @@ describe("useSetupForm", () => {
     it("does not require description for a regular category", () => {
       const { form, scope } = makeForm()
       form.currentStep.value = 4
-      form.state.businessCategory = 1 // Technology & IT
+      form.state.businessActivity = 1 // Technology & IT
       form.next()
       expect(form.currentStep.value).toBe(5)
       scope.stop()
@@ -94,7 +94,7 @@ describe("useSetupForm", () => {
     it("requires description (3+ chars) only when 'Other' is selected", () => {
       const { form, scope } = makeForm()
       form.currentStep.value = 4
-      form.state.businessCategory = 8 // Other
+      form.state.businessActivity = 8 // Other
       form.state.activityDescription = "ai"
       form.next()
       expect(form.currentStep.value).toBe(4)
@@ -230,8 +230,8 @@ describe("useSetupForm", () => {
         applicantType: 0,
         mainGoal: 0,
         licenseType: 0,
-        businessCategory: 1,
-        partnerStructure: 0,
+        businessActivity: 1,
+        companyStructure: 0,
         wantsResidency: 0,
         bankAccount: 0,
         currentlyInUae: 0,

@@ -109,7 +109,7 @@ export const STEPS: Step[] = [
     ],
   },
   {
-    id: "businessCategory",
+    id: "businessActivity",
     number: 4,
     kind: "category",
     eyebrow: "Step 4 of 11",
@@ -132,7 +132,7 @@ export const STEPS: Step[] = [
     ],
   },
   {
-    id: "partnerStructure",
+    id: "companyStructure",
     number: 5,
     kind: "radio",
     eyebrow: "Step 5 of 11",
