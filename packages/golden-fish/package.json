@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
   }
 }
