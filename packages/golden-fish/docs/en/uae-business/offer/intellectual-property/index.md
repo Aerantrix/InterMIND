@@ -520,8 +520,8 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-ip'))
   <div class="gf-container">
     <div class="gf-goldie-shell">
       <div class="gf-goldie-avatar">
-        <img src="/img/GoldenFishDark.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img dark-only" />
-        <img src="/img/goldie-portrait-light.png" alt="Goldie — your UAE AI helper" class="gf-goldie-img light-only" />
+        <img src="/img/GoldenFishDark.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img dark-only" loading="lazy" decoding="async" />
+        <img src="/img/goldie-portrait-light.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img light-only" loading="lazy" decoding="async" />
       </div>
       <div>
         <div class="gf-eyebrow">FREE · INSTANT · 24/7</div>
@@ -534,7 +534,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-ip'))
           <span class="gf-chip">Amazon takedowns?</span>
         </div>
         <div class="gf-button-row">
-          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.png" alt="" class="gf-btn-icon" /> Chat with Goldie →</a>
+          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.webp" alt="" class="gf-btn-icon" loading="lazy" decoding="async" /> Chat with Goldie →</a>
           <a href="/resources/contacts" class="gf-btn gf-btn-outline">Talk to a real expert →</a>
         </div>
       </div>

@@ -299,7 +299,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-banking'))
     <p class="gf-sub">Specific cases — what the situation was, what we did, what changed.</p>
     <div class="gf-cases-scroll">
       <div class="gf-case-scroll-card">
-        <img src="/img/case-saas-startup.jpg" alt="SaaS startup banking case — Belgrade to Dubai" class="gf-case-scroll-img" />
+        <img src="/img/case-saas-startup.avif" alt="SaaS startup banking case — Belgrade to Dubai" class="gf-case-scroll-img" loading="lazy" decoding="async" />
         <div class="gf-case-tag">Clean SME · SaaS</div>
         <h3 class="gf-case-title">SaaS startup, Belgrade → Dubai</h3>
         <div class="gf-case-stats">5 employees · IFZA · USD/EUR/AED · First try</div>
@@ -307,7 +307,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-banking'))
         <p class="gf-case-quote">"Walked into the bank meeting confident, not nervous. Account live in 4 weeks."<br><span class="gf-case-author">— Andrey, CEO &amp; Founder</span></p>
       </div>
       <div class="gf-case-scroll-card">
-        <img src="/img/pexels-alesiakozik-6777564-opt.jpg" alt="High-risk crypto consultancy — UAE corporate banking case" class="gf-case-scroll-img" />
+        <img src="/img/pexels-alesiakozik-6777564-opt.avif" alt="High-risk crypto consultancy — UAE corporate banking case" class="gf-case-scroll-img" loading="lazy" decoding="async" />
         <div class="gf-case-tag">High-risk · Crypto</div>
         <h3 class="gf-case-title">High-risk crypto consultancy</h3>
         <div class="gf-case-stats">Refused twice elsewhere · Approved on third try · 6 weeks</div>
@@ -400,7 +400,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-banking'))
           <span class="gf-chip">Multi-currency from day one?</span>
         </div>
         <div class="gf-button-row">
-          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.png" alt="" class="gf-btn-icon" /> Chat with Goldie →</a>
+          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.webp" alt="" class="gf-btn-icon" loading="lazy" decoding="async" /> Chat with Goldie →</a>
           <a href="/resources/contacts" class="gf-btn gf-btn-outline">Talk to a real expert →</a>
         </div>
       </div>

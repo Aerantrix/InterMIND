@@ -653,7 +653,7 @@ body.gf-page-residency .VPHero {
   background-image: url('/img/residency%20dark.png') !important;
 }
 :root:not(.dark) body.gf-page-residency .VPHero {
-  background-image: url('/img/service-residency-visas.jpg') !important;
+  background-image: url('/img/service-residency-visas.avif') !important;
 }
 /* Smooth overlay — opaque on the left through the copy zone so the
    text reads, then fades to fully clear so the currency photo breathes. */
