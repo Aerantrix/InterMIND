@@ -4,37 +4,27 @@ description: "Golden Fish operates on a transparent prepayment model: a fixed-pr
 ---
 
 <script setup>
-function ppAnimBars() {
+import { onMounted } from 'vue'
+
+onMounted(() => {
   if (typeof document === 'undefined') return
   const bars = document.querySelectorAll('.pp-schematic .pp-bar-ta[data-w]')
+  const animated = typeof sessionStorage !== 'undefined' && sessionStorage.getItem('pp-anim-played') === '1'
+  if (animated) {
+    bars.forEach((bar) => { bar.style.transition = 'none'; bar.style.width = bar.dataset.w + '%' })
+    return
+  }
   bars.forEach((bar, i) => {
     bar.style.width = '0%'
     setTimeout(() => { bar.style.width = bar.dataset.w + '%' }, 250 + i * 220)
   })
-}
-
-function ppToggleCmp(e) {
-  if (typeof document === 'undefined') return
-  const g = document.getElementById('pp-grid')
-  const b = e.currentTarget
-  g.classList.toggle('pp-solo')
-  if (g.classList.contains('pp-solo')) {
-    b.textContent = 'Show comparison with typical agency'
-  } else {
-    b.textContent = 'Hide comparison'
-    ppAnimBars()
-  }
-}
+  try { sessionStorage.setItem('pp-anim-played', '1') } catch (e) {}
+})
 </script>
 
 <style>
 .pp-schematic { margin: 2rem 0; }
-.pp-schematic .pp-ctrl { display: flex; justify-content: flex-end; margin: 0 0 16px; }
-.pp-schematic .pp-ctrl button { background: transparent; border: 1px solid var(--vp-c-divider); color: var(--vp-c-text-2); padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
-.pp-schematic .pp-ctrl button:hover { border-color: var(--vp-c-text-3); color: var(--vp-c-text-1); }
 .pp-schematic .pp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.pp-schematic .pp-grid.pp-solo { grid-template-columns: 1fr; max-width: 540px; }
-.pp-schematic .pp-grid.pp-solo .pp-col-typical { display: none; }
 .pp-schematic .pp-col-head { font-size: 11px; letter-spacing: 0.08em; padding: 8px 0; border-bottom: 1px solid var(--vp-c-divider); margin-bottom: 12px; font-weight: 500; color: var(--vp-c-text-3); }
 .pp-schematic .pp-col-gf .pp-col-head { color: var(--vp-c-success-1); border-bottom-color: var(--vp-c-success-soft); }
 .pp-schematic .pp-col-typical .pp-col-head { color: var(--vp-c-warning-1); border-bottom-color: var(--vp-c-warning-soft); }
@@ -73,9 +63,7 @@ You pay only for the agreed scope of services. Before any work begins, we provid
 
 <div class="pp-schematic">
 
-<div class="pp-ctrl"><button @click="ppToggleCmp">Show comparison with typical agency</button></div>
-
-<div class="pp-grid pp-solo" id="pp-grid">
+<div class="pp-grid" id="pp-grid">
   <div class="pp-col pp-col-gf">
     <div class="pp-col-head">GOLDEN FISH</div>
     <div class="pp-step">

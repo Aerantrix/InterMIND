@@ -1,13 +1,13 @@
 ---
 layout: home
-title: "UAE Golden Visa | Success Fee Based Service"
-description: "Premium 10-year residency visa with zero upfront fees - pay only after approval. Full application management with 98% success rate. Free renewal service, government fees only."
+title: "UAE Golden Visa | Fixed-Price Application Service"
+description: "Premium 10-year residency visa with a fixed-price quote, locked in writing before any work begins. Full application management with 98% success rate. Free renewal service, government fees itemised."
 showSponsors: false
 
 hero:
   name: "UAE Golden Visa"
-  text: Payment by results
-  tagline: 10-year residency. <span class="hl">Zero upfront fees</span> - pay only after approval. 98% success rate.
+  text: Fixed-price quote
+  tagline: 10-year residency. <span class="hl">Fixed-price quote</span>, locked in writing before any work begins. 98% success rate.
   actions:
     - theme: brand
       text: Instant expert chat
@@ -100,8 +100,8 @@ hero:
   },
   {
     icon: '💸',
-    title: '**Success-Based Fees**',
-    text: '[Pay only after approval](/uae-business/benefits/success-based-fees). Complete transparency with no hidden costs.'
+    title: '**Transparent Prepayment**',
+    text: '[Fixed-price quote, locked in writing](/uae-business/benefits/prepayment-model) before any work begins. Complete transparency with no hidden costs.'
   },
 ]" />
 
