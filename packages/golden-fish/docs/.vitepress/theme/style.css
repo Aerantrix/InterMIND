@@ -526,7 +526,7 @@ code {
 .VPHero {
   position: relative;
   isolation: isolate;
-  background-image: url('/img/hero-bg.jpg');
+  background-image: url('/img/hero-bg.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -536,16 +536,6 @@ code {
 /* Stats block sits closer to hero — half the usual vertical breathing room */
 .VPHome .gf-section:first-of-type {
   padding: clamp(14px, 1.8vw, 22px) 0;
-}
-
-/* Use WebP when supported by the browser */
-@supports (background-image: image-set(url('/img/hero-bg.webp') type('image/webp'))) {
-  .VPHero {
-    background-image: image-set(
-      url('/img/hero-bg.webp') type('image/webp'),
-      url('/img/hero-bg.jpg') type('image/jpeg')
-    );
-  }
 }
 
 /* Gradient overlay sits between background and content */

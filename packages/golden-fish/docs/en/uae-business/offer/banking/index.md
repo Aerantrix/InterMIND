@@ -4,6 +4,22 @@ title: "UAE Corporate Banking — 96% Approval Rate, Fixed-Price Quote"
 description: "Open a UAE corporate bank account with a compliance-first approach. 50+ banks covered, multi-currency setup, fixed-price quote in 24h, account live in 4–6 weeks."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-banking-light.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: light)"
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-banking-dark.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: dark)"
+
 hero:
   name: "Open a UAE corporate bank account."
   tagline: "96% approval rate. We open accounts where others get rejected. Compliance-first approach, 50+ banks covered, multi-currency setup. Fixed-price quote in 24h, account live in 4–6 weeks."

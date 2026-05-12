@@ -4,6 +4,22 @@ title: "UAE Company Registration — Fixed Price, No Hidden Fees"
 description: "Open your UAE company at a fixed price. Detailed quote upfront, locked in writing. From licence to bank account in 4–6 weeks."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-companyreg-light.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: light)"
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-companyreg-dark.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: dark)"
+
 hero:
   name: "Open Your UAE Company. Fixed Price."
   tagline: "No hidden fees. Ever. From licence to bank account in 4–6 weeks. We quote everything upfront — and lock the price in writing."

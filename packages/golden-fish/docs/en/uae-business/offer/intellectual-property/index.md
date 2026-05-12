@@ -4,6 +4,14 @@ title: "UAE Intellectual Property — Trademarks, Copyright, IP Licensing & Enfo
 description: "Trademark registration (UAE + Madrid Protocol), software copyright, IP licensing agreements and infringement enforcement. UAE IP counsel — fixed-fee filings, free clearance search, quote within 24h."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-ip.avif
+      type: image/avif
+      fetchpriority: high
+
 hero:
   name: "Protect your brand and software IP — in the UAE and across the GCC."
   tagline: "Trademark registration (UAE + Madrid Protocol), software copyright filings, IP licensing agreements, and enforcement against infringement. UAE IP counsel that handles registration through to dispute resolution."
