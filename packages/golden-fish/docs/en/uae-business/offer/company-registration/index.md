@@ -309,7 +309,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-companyreg'))
     <p class="gf-sub">Specific outcomes, specific timelines — not generic testimonials.</p>
     <div class="gf-cases-scroll">
       <div class="gf-case-scroll-card">
-        <img src="/img/case-saas-startup.jpg" alt="SaaS startup relocation — Belgrade to Dubai" class="gf-case-scroll-img" />
+        <img src="/img/case-saas-startup.avif" alt="SaaS startup relocation — Belgrade to Dubai" class="gf-case-scroll-img" loading="lazy" decoding="async" />
         <div class="gf-case-tag">SaaS · Belgrade → Dubai</div>
         <h3 class="gf-case-title">5-person SaaS startup</h3>
         <div class="gf-case-stats">5 weeks · IFZA · 4 visas · Bank on first try</div>
@@ -325,7 +325,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-companyreg'))
         <p class="gf-case-quote">"Cheapest legal way to get a UAE residence. They quoted $4,200, I paid $4,200."<br><span class="gf-case-author">— Maxim, Founder · B2B advisory</span></p>
       </div>
       <div class="gf-case-scroll-card">
-        <img src="/img/brand_from_eu.jpg" alt="GCC trading company — mainland import/export" class="gf-case-scroll-img" />
+        <img src="/img/hero-ip.avif" alt="GCC trading company — mainland import/export" class="gf-case-scroll-img" loading="lazy" decoding="async" />
         <div class="gf-case-tag">TRADING · MAINLAND DED</div>
         <h3 class="gf-case-title">GCC trading company</h3>
         <div class="gf-case-stats">4 weeks · 3 visas · Emirates NBD · Mainland licence</div>
@@ -410,7 +410,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-companyreg'))
           <span class="gf-chip">Bank approval — what affects it?</span>
         </div>
         <div class="gf-button-row">
-          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.png" alt="" class="gf-btn-icon" /> Chat with Goldie →</a>
+          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.webp" alt="" class="gf-btn-icon" loading="lazy" decoding="async" /> Chat with Goldie →</a>
           <a href="/resources/contacts" class="gf-btn gf-btn-outline">Talk to a real expert →</a>
         </div>
       </div>

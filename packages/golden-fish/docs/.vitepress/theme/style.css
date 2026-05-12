@@ -585,12 +585,7 @@ code {
 
 /* Light mode — different photograph that reads on linen palette */
 :root:not(.dark) .VPHero {
-  background-image: url('/img/hero-bg-light.jpg');
-}
-@supports (background-image: image-set(url('/img/hero-bg-light.jpg') type('image/jpeg'))) {
-  :root:not(.dark) .VPHero {
-    background-image: image-set(url('/img/hero-bg-light.jpg') type('image/jpeg'));
-  }
+  background-image: url('/img/hero-bg-light.avif');
 }
 
 /* Light mode overlay — linen tint, ink-readable on left, image breathes on right */
@@ -612,17 +607,17 @@ code {
  * pattern). Each page gets two rules — dark theme + light theme.
  * ============================================================ */
 body.gf-page-companyreg .VPHero {
-  background-image: url('/img/pexels-atulm0han-17914739.jpg') !important;
+  background-image: url('/img/hero-companyreg-dark.avif') !important;
 }
 :root:not(.dark) body.gf-page-companyreg .VPHero {
-  background-image: url('/img/pexels-nelemson-29470840.jpg') !important;
+  background-image: url('/img/hero-companyreg-light.avif') !important;
 }
 
 body.gf-page-banking .VPHero {
-  background-image: url('/img/bank_hero2_dark.jpg') !important;
+  background-image: url('/img/hero-banking-dark.avif') !important;
 }
 :root:not(.dark) body.gf-page-banking .VPHero {
-  background-image: url('/img/bank_hero2_light.jpg') !important;
+  background-image: url('/img/hero-banking-light.avif') !important;
 }
 
 body.gf-page-legal .VPHero {
@@ -633,27 +628,27 @@ body.gf-page-legal .VPHero {
 }
 
 body.gf-page-tax .VPHero {
-  background-image: url('/img/tax_hero_dark.jpg') !important;
+  background-image: url('/img/hero-tax-dark.avif') !important;
 }
 :root:not(.dark) body.gf-page-tax .VPHero {
-  background-image: url('/img/tax_hero_light.jpg') !important;
+  background-image: url('/img/hero-tax-light.avif') !important;
 }
 
 /* IP landing — placeholder hero image; swap to a dedicated IP-themed
    shot (brand boards, code, registry certificates) when available. */
 body.gf-page-ip .VPHero {
-  background-image: url('/img/brand_from_eu.jpg') !important;
+  background-image: url('/img/hero-ip.avif') !important;
 }
 :root:not(.dark) body.gf-page-ip .VPHero {
-  background-image: url('/img/brand_from_eu.jpg') !important;
+  background-image: url('/img/hero-ip.avif') !important;
 }
 
 /* Residency & Visas landing — family / lifestyle hero, soft tone. */
 body.gf-page-residency .VPHero {
-  background-image: url('/img/residency%20dark.png') !important;
+  background-image: url('/img/hero-residency-dark.avif') !important;
 }
 :root:not(.dark) body.gf-page-residency .VPHero {
-  background-image: url('/img/service-residency-visas.jpg') !important;
+  background-image: url('/img/service-residency-visas.avif') !important;
 }
 /* Smooth overlay — opaque on the left through the copy zone so the
    text reads, then fades to fully clear so the currency photo breathes. */
