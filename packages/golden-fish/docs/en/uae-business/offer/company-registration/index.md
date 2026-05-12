@@ -325,7 +325,7 @@ onBeforeUnmount(() => document.body.classList.remove('gf-page-companyreg'))
         <p class="gf-case-quote">"Cheapest legal way to get a UAE residence. They quoted $4,200, I paid $4,200."<br><span class="gf-case-author">— Maxim, Founder · B2B advisory</span></p>
       </div>
       <div class="gf-case-scroll-card">
-        <img src="/img/brand_from_eu.jpg" alt="GCC trading company — mainland import/export" class="gf-case-scroll-img" />
+        <img src="/img/hero-ip.avif" alt="GCC trading company — mainland import/export" class="gf-case-scroll-img" loading="lazy" decoding="async" />
         <div class="gf-case-tag">TRADING · MAINLAND DED</div>
         <h3 class="gf-case-title">GCC trading company</h3>
         <div class="gf-case-stats">4 weeks · 3 visas · Emirates NBD · Mainland licence</div>
