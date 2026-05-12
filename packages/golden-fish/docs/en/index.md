@@ -8,9 +8,17 @@ head:
   - - link
     - rel: preload
       as: image
+      href: /img/hero-bg-light.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: light)"
+  - - link
+    - rel: preload
+      as: image
       href: /img/hero-bg.webp
       type: image/webp
       fetchpriority: high
+      media: "(prefers-color-scheme: dark)"
 
 hero:
   name: "Start Your Business in the UAE"

@@ -4,6 +4,22 @@ title: "UAE Residency & Visas — Investor, Employee, Family, Golden Visa"
 description: "UAE residency for founders, employees, families and Golden Visa applicants. Free eligibility assessment, document prep, medical, biometrics, Emirates ID — plus settling-in (schools, medical, banking)."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/service-residency-visas.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: light)"
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-residency-dark.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: dark)"
+
 hero:
   name: "UAE residency for founders, employees, families — and Golden Visa applicants."
   tagline: "From investor visa to family sponsorship to 10-year Golden Visa. We handle the full process — eligibility check, document prep, medical, biometrics, Emirates ID — and help you settle once you arrive: schools, medical insurance, banking."

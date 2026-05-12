@@ -4,6 +4,22 @@ title: "UAE Tax & Compliance — Corporate Tax, VAT, ESR, UBO, Accounting"
 description: "Keep your UAE entity in good standing — without thinking about it. Corporate Tax (9%), VAT, ESR, UBO, accounting and payroll handled by an in-house licensed team in Dubai. Free compliance review."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-tax-light.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: light)"
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-tax-dark.avif
+      type: image/avif
+      fetchpriority: high
+      media: "(prefers-color-scheme: dark)"
+
 hero:
   name: "Keep your UAE entity in good standing — without thinking about it."
   tagline: "Corporate Tax (9%), VAT, ESR, UBO, accounting and payroll — handled by an in-house licensed team. We track deadlines, file returns, and respond to FTA correspondence so you can run the business."
