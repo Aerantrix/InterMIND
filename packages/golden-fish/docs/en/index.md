@@ -4,6 +4,14 @@ title: Start Your Business in the UAE
 description: "Expert UAE company formation services with transparent prepayment, step-by-step guidance, and full legal support. Banking, visas, and corporate structuring under one official contract."
 showSponsors: false
 
+head:
+  - - link
+    - rel: preload
+      as: image
+      href: /img/hero-bg.webp
+      type: image/webp
+      fetchpriority: high
+
 hero:
   name: "Start Your Business in the UAE"
   tagline: "Stress-Free and Legally Guaranteed. Transparent pricing, step-by-step guidance, and official prepayment contract."
@@ -65,10 +73,10 @@ hero:
           </ul>
           <a href="/uae-business/offer/company-registration/" class="gf-svc-cta">Explore Company Setup →</a>
         </div>
-        <img src="/img/service-company-setup.jpg" alt="UAE company setup — corporate registration in progress" class="gf-svc-img gf-svc-photo" />
+        <img src="/img/service-company-setup.avif" alt="UAE company setup — corporate registration in progress" class="gf-svc-img gf-svc-photo" loading="lazy" decoding="async" />
       </div>
       <div class="gf-svc-card gf-svc-secondary gf-svc-secondary-spotlight">
-        <img src="/img/pexels-pixabay-210742.jpg" alt="UAE corporate banking — high-rise financial district" class="gf-svc-img gf-svc-photo" />
+        <img src="/img/pexels-pixabay-210742.avif" alt="UAE corporate banking — high-rise financial district" class="gf-svc-img gf-svc-photo" loading="lazy" decoding="async" />
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Banking</h3>
           <p class="gf-svc-desc">UAE corporate accounts opened with major banks. Guaranteed approval methodology.</p>
@@ -81,7 +89,7 @@ hero:
         </div>
       </div>
       <div class="gf-svc-card gf-svc-secondary">
-        <img src="/img/service-residency-visas.jpg" alt="UAE residency & Golden Visa — family relocation" class="gf-svc-img gf-svc-photo" />
+        <img src="/img/service-residency-visas.avif" alt="UAE residency & Golden Visa — family relocation" class="gf-svc-img gf-svc-photo" loading="lazy" decoding="async" />
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Residency & Visas</h3>
           <p class="gf-svc-desc">Long-term residence tied to your company. Owners, partners, employees, and family members.</p>
@@ -89,7 +97,7 @@ hero:
         </div>
       </div>
       <div class="gf-svc-card gf-svc-secondary">
-        <img src="/img/iStock-1366951573.avif" alt="Legal & corporate structuring — boardroom and shareholder agreement" class="gf-svc-img gf-svc-photo" />
+        <img src="/img/iStock-1366951573.avif" alt="Legal & corporate structuring — boardroom and shareholder agreement" class="gf-svc-img gf-svc-photo" loading="lazy" decoding="async" />
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Legal & Structuring</h3>
           <p class="gf-svc-desc">Corporate structuring, shareholder agreements, M&A, restructuring, dispute resolution. In-house licensed team.</p>
@@ -97,7 +105,7 @@ hero:
         </div>
       </div>
       <div class="gf-svc-card gf-svc-secondary">
-        <img src="/img/pexels-rdne-8292883-opt.jpg" alt="UAE tax & compliance — accounting and bookkeeping" class="gf-svc-img gf-svc-photo" />
+        <img src="/img/pexels-rdne-8292883-opt.avif" alt="UAE tax & compliance — accounting and bookkeeping" class="gf-svc-img gf-svc-photo" loading="lazy" decoding="async" />
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Tax & Compliance</h3>
           <p class="gf-svc-desc">Corporate tax, VAT, ESR, UBO, accounting & payroll. Keep your UAE entity in good standing.</p>
@@ -179,7 +187,7 @@ hero:
     <p class="gf-sub">Specific outcomes from setup, banking, and residency engagements.</p>
     <div class="gf-cases-grid">
       <div class="gf-case-card">
-        <img src="/img/case-saas-startup.jpg" alt="SaaS startup relocation — Belgrade to Dubai" class="gf-case-img gf-case-photo" />
+        <img src="/img/case-saas-startup.avif" alt="SaaS startup relocation — Belgrade to Dubai" class="gf-case-img gf-case-photo" loading="lazy" decoding="async" />
         <div class="gf-case-content">
           <div class="gf-case-tag">SETUP CASE</div>
           <h3 class="gf-case-title">SaaS startup, Belgrade → Dubai</h3>
@@ -189,7 +197,7 @@ hero:
         </div>
       </div>
       <div class="gf-case-card">
-        <img src="/img/pexels-alesiakozik-6777564-opt.jpg" alt="High-risk crypto consultancy — banking & fintech case" class="gf-case-img gf-case-photo" />
+        <img src="/img/pexels-alesiakozik-6777564-opt.avif" alt="High-risk crypto consultancy — banking & fintech case" class="gf-case-img gf-case-photo" loading="lazy" decoding="async" />
         <div class="gf-case-content">
           <div class="gf-case-tag">BANKING CASE</div>
           <h3 class="gf-case-title">High-risk crypto consultancy</h3>
@@ -199,7 +207,7 @@ hero:
         </div>
       </div>
       <div class="gf-case-card">
-        <img src="/img/family-case.jpg" alt="Family relocation to Dubai — investor Golden Visa" class="gf-case-img gf-case-photo" />
+        <img src="/img/family-case.avif" alt="Family relocation to Dubai — investor Golden Visa" class="gf-case-img gf-case-photo" loading="lazy" decoding="async" />
         <div class="gf-case-content">
           <div class="gf-case-tag">RESIDENCY CASE</div>
           <h3 class="gf-case-title">Family of 5 + Golden Visa</h3>
@@ -220,8 +228,8 @@ hero:
   <div class="gf-container">
     <div class="gf-goldie-shell">
       <div class="gf-goldie-avatar">
-        <img src="/img/GoldenFishDark.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img dark-only" />
-        <img src="/img/goldie-portrait-light.png" alt="Goldie — your UAE AI helper" class="gf-goldie-img light-only" />
+        <img src="/img/GoldenFishDark.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img dark-only" loading="lazy" decoding="async" />
+        <img src="/img/goldie-portrait-light.avif" alt="Goldie — your UAE AI helper" class="gf-goldie-img light-only" loading="lazy" decoding="async" />
       </div>
       <div>
         <div class="gf-eyebrow">FREE · INSTANT · 24/7</div>
@@ -234,7 +242,7 @@ hero:
           <span class="gf-chip">Free zone licence costs</span>
         </div>
         <div class="gf-button-row">
-          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.png" alt="" class="gf-btn-icon" /> Chat with Goldie →</a>
+          <a href="/chat" class="gf-btn gf-btn-gold"><img src="/img/goldie-icon.webp" alt="" class="gf-btn-icon" loading="lazy" decoding="async" /> Chat with Goldie →</a>
           <a href="/resources/contacts" class="gf-btn gf-btn-outline">Talk to a real expert →</a>
         </div>
       </div>
