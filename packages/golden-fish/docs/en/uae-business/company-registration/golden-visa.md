@@ -209,7 +209,7 @@ The UAE Golden Visa provides a unique opportunity for investors, entrepreneurs, 
 
 ## Our Support Services
 
-> [!NOTE] 💚 Our success-based fee model means you pay nothing until your Golden Visa is approved. 98% of our applications are successful, and we provide full support throughout the entire process.
+> [!NOTE] 💚 Our <a href="/uae-business/benefits/prepayment-model">transparent prepayment model</a> means a fixed-price quote, locked in writing before any work begins — no hidden fees, no scope creep. 98% of our applications are successful, and we provide full support throughout the entire process.
 
 ### Full-Service Support Package
 

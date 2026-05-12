@@ -73,5 +73,5 @@ The average UAE setup engagement period is 17 weeks as outlined below:
 | Engagement completion               | 1 week   | 1 week    | 1 week                  | 1 week         |
 | Total engagement period             | 16 weeks | 17 weeks  | 17 weeks                | 15 weeks       |
 
-> [!IMPORTANT] Success-Based Fees
-> [Pay only after approval](./../benefits/success-based-fees.md). Complete transparency with no hidden costs.
+> [!IMPORTANT] Transparent Prepayment Model
+> [Fixed-price quote, locked in writing](./../benefits/prepayment-model.md) before any work begins. Every line item itemised — no hidden fees, no scope creep.

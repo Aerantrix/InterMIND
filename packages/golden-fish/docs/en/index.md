@@ -85,7 +85,7 @@ hero:
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Residency & Visas</h3>
           <p class="gf-svc-desc">Long-term residence tied to your company. Owners, partners, employees, and family members.</p>
-          <a href="/uae-business/offer/golden-visa/" class="gf-svc-cta">Residency →</a>
+          <a href="/uae-business/offer/residency-visas/" class="gf-svc-cta">Residency →</a>
         </div>
       </div>
       <div class="gf-svc-card gf-svc-secondary">
@@ -101,7 +101,7 @@ hero:
         <div class="gf-svc-content">
           <h3 class="gf-svc-title">Tax & Compliance</h3>
           <p class="gf-svc-desc">Corporate tax, VAT, ESR, UBO, accounting & payroll. Keep your UAE entity in good standing.</p>
-          <a href="/uae-business/company-registration/Protect-Your-Business" class="gf-svc-cta">Compliance →</a>
+          <a href="/uae-business/offer/tax/" class="gf-svc-cta">Compliance →</a>
         </div>
       </div>
     </div>

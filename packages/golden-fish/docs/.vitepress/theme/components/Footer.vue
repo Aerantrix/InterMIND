@@ -31,8 +31,9 @@ function openPrivacySettings(e: Event) {
           <ul class="gf-footer-list">
             <li><a :href="withBase('/uae-business/offer/company-registration/')">Company Setup</a></li>
             <li><a :href="withBase('/uae-business/offer/banking/')">Banking</a></li>
-            <li><a :href="withBase('/uae-business/offer/golden-visa/')">Residency &amp; Visas</a></li>
+            <li><a :href="withBase('/uae-business/offer/residency-visas/')">Residency &amp; Visas</a></li>
             <li><a :href="withBase('/uae-business/offer/legal-support/')">Legal &amp; Structuring</a></li>
+            <!-- <li><a :href="withBase('/uae-business/offer/intellectual-property/')">Intellectual Property</a></li> -->
             <li><a :href="withBase('/uae-business/company-registration/Protect-Your-Business')">Tax &amp; Compliance</a></li>
           </ul>
         </div>
@@ -66,6 +67,10 @@ function openPrivacySettings(e: Event) {
             <li>
               <Icon icon="tabler:brand-whatsapp" />
               <a href="https://wa.me/message/KDLD4FZVW7EUC1" target="_blank" rel="noopener">WhatsApp</a>
+            </li>
+            <li>
+              <Icon icon="tabler:brand-linkedin" />
+              <a href="https://www.linkedin.com/company/golden-fish-csp-llc/" target="_blank" rel="noopener">LinkedIn</a>
             </li>
           </ul>
         </div>
